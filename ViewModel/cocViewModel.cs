@@ -64,10 +64,10 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 
             if (rcoc.HasValue && ntt.HasValue)
             {
-                bool ketqua = ntt.Value < rcoc.Value / gamma;
+                bool ketqua = ntt.Value <= rcoc.Value / gamma;
                 KetQuaKiemTra1 = ketqua
-                    ? $"✅ Đạt: Ntt = {ntt} < Rcọc / γ = {rcoc} / {gamma} = {rcoc.Value / gamma:F2}"
-                    : $"❌ Không đạt: Ntt = {ntt} ≥ Rcọc / γ = {rcoc} / {gamma} = {rcoc.Value / gamma:F2}";
+                    ? $"✅ Đạt: Ntt = {ntt} <= Rcọc / γ = {rcoc} / {gamma} = {rcoc.Value / gamma:F2}"
+                    : $"❌ Không đạt: Ntt = {ntt} > Rcọc / γ = {rcoc} / {gamma} = {rcoc.Value / gamma:F2}";
             }
             else
             {
@@ -83,10 +83,10 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 
             if (rcoc.HasValue && pep.HasValue)
             {
-                bool ketqua = pep < rcoc.Value * gammaep;
+                bool ketqua = pep <= rcoc.Value * gammaep;
                 KetQuaKiemTra2 = ketqua
-                    ? $"✅ Đạt: Pep = {pep} < Rcọc × γép = {rcoc} × {gammaep} = {rcoc.Value * gammaep:F2}"
-                    : $"❌ Không đạt: Pep = {pep} ≥ Rcọc × γép = {rcoc} × {gammaep} = {rcoc.Value * gammaep:F2}";
+                    ? $"✅ Đạt: Pep = {pep} <= Rcọc × γép = {rcoc} × {gammaep} = {rcoc.Value * gammaep:F2}"
+                    : $"❌ Không đạt: Pep = {pep} > Rcọc × γép = {rcoc} × {gammaep} = {rcoc.Value * gammaep:F2}";
             }
             else
             {

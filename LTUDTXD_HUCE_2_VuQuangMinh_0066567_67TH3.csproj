@@ -58,6 +58,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\StringToBoolConverter.cs" />
     <Compile Include="Model\cocmodel.cs" />
+    <Compile Include="Model\daicocmodel.cs" />
     <Compile Include="Model\PhuongAnCoc.cs" />
     <Compile Include="Model\phuongphapsucchiutai.cs" />
     <Compile Include="Service\DataService.cs" />
@@ -76,6 +77,7 @@
       <DependentUpon>ucstatus.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\cocViewModel.cs" />
+    <Compile Include="ViewModel\daicocViewModel.cs" />
     <Compile Include="ViewModel\GroundViewModel.cs" />
     <Compile Include="ViewModel\PhuongAnCocViewModel.cs" />
     <Compile Include="ViewModel\SucChiuTaiCocViewModel.cs" />

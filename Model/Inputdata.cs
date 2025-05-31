@@ -16,6 +16,7 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model
         public phuongphapvatlieu Phuongphapvatlieu { get; set; }
         public cocmodel Coc { get; set; }
         public double? Rcocmin { get; set; } // Rcọc là min trong các phương pháp
+        public daicocmodel Daicoc { get; set; }
 
 
 
@@ -25,9 +26,10 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model
             Vatlieu = new Vatlieu();
             Vatlieu2 = new Vatlieu2();
             GroundList = new List<Ground>(); // Khởi tạo danh sách lớp đất
-            PhuongAnCoc = new PhuongAnCoc(); // Khởi tạo phương án cọc
+            PhuongAnCoc = new PhuongAnCoc();
             Phuongphapvatlieu = new phuongphapvatlieu();
-            Coc = new cocmodel(); // Khởi tạo mô hình cọc
+            Coc = new cocmodel(); 
+            Daicoc = new daicocmodel(); 
         }
     }
 }
