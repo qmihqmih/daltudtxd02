@@ -15,6 +15,7 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model
         public PhuongAnCoc PhuongAnCoc { get; set; }
         public phuongphapvatlieu Phuongphapvatlieu { get; set; }
         public cocmodel Coc { get; set; }
+        public double? Rcocmin { get; set; } // Rcọc là min trong các phương pháp
 
 
 

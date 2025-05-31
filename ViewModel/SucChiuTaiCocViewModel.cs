@@ -110,6 +110,9 @@ public class SucChiuTaiCocViewModel : INotifyPropertyChanged
         VatLieu = TinhVatLieu(); 
         DataService.Instance.InputData.Phuongphapvatlieu.Vatlieu = this.VatLieu;
 
+        if (Min.HasValue)
+            DataService.Instance.InputData.Rcocmin = Min.Value;
+
         MessageBox.Show("Kết quả đã được lưu!");
     }
 
