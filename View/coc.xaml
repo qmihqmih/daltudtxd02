@@ -1,0 +1,39 @@
+﻿<Window x:Class="LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View.coc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View"
+        mc:Ignorable="d"
+        Title="coc" Height="450" Width="800">
+    <Grid>
+        <GroupBox Header="Cọc" FontWeight="Black" FontSize="20" Margin="0,10,0,176" HorizontalAlignment="Center" Width="225">
+            <StackPanel Orientation="Vertical">
+                <Label Content="Lực ép lớn nhất khi thi công" FontWeight="Medium" FontSize="15" Margin="0 0 0 0" HorizontalAlignment="Center"/>
+                <TextBox IsReadOnly="True" Width="117"></TextBox>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="" FontWeight="Medium" FontSize="20" Margin="0,122,0,0" HorizontalAlignment="Center" Width="370">
+            <StackPanel Orientation="Vertical">
+                <Button Content="Kiểm tra sức chịu tải cọc ép" Foreground="White" Width="320" Height="30" Margin="15,10,0,0" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Kiểm tra lực ép tối đa khi ép cọc" Foreground="White" Width="320" Height="30" Margin="15,10,0,0" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
