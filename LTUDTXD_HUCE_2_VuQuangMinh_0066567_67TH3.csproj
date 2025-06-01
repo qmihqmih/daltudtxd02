@@ -299,5 +299,8 @@
   <ItemGroup>
     <Resource Include="Resources\images\anhnen.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\Screenshot 2025-06-02 023626.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -68,9 +68,9 @@ public class SucChiuTaiCocViewModel : INotifyPropertyChanged
         Min = values.Where(v => v.HasValue).Min();
     }
 
-    private double TinhCPT() => 1200;       // giả sử
-    private double TinhSPT() => 1000;       // giả sử
-    private double TinhThongKe() => 1100;   // giả sử
+    private double TinhCPT() => 365;       //(kN)
+    private double TinhSPT() => 285;       //(kN)
+    private double TinhThongKe() => 275;   //(kN)
     private double TinhVatLieu()
     {
         var a = DataService.Instance.InputData.Vatlieu;

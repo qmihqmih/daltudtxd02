@@ -25,8 +25,8 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model
         private double? wd;
         private double? wch;
         private double? chisodeo;
-        private double? gammanuoc = 9.81; // giá trị mặc định của trọng lượng riêng nước (kN/m3
-        public string GroundState { get; set; }     // Trạng thái đất dựa vào B
+        private double? gammanuoc = 9.81; // giá trị mặc định của trọng lượng riêng nước (kN/m3)
+
         public int? Lopdat
         {
             get
@@ -212,6 +212,8 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model
             get => gammanuoc;
             set { gammanuoc = value; OnPropertyChanged(nameof(GammaNuoc)); }
         }
+
+        public string GroundState { get; internal set; }
 
         #region INotifyPropertyChanged Members
 

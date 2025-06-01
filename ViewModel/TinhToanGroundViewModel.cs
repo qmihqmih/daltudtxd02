@@ -73,7 +73,7 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 
             foreach (var g in data)
             {
-                // Tính lại E và Doset nếu cần
+                    
                 g.E = (int?)TinhE(g);
                 g.Doset = (int?)TinhDoset(g);
                 g.ChiSoDeo = (int?)TinhChiSoDeo(g);

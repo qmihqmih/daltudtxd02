@@ -20,16 +20,16 @@
         </StackPanel>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Height="133" Width="300" Margin="0,91,0,0">
             <StackPanel Orientation="Horizontal" Height="41">
-                <Label Content="Cạnh / Đường kính" Height="25" Margin="20,10,30,0" Width="122" HorizontalAlignment="Center"/>
+                <Label Content="Cạnh/Đường kính (m)" Height="25" Margin="20,10,30,0" Width="124"/>
                 <ComboBox  Height="25" Margin="0,10,0,0" Width="122" HorizontalAlignment="Center" ItemsSource="{Binding DanhSachKichThuoc}" SelectedItem="{Binding KichThuoc , Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="41">
-                <Label Content="Chiều dài cọc" Height="25" Margin="20,10,30,0" Width="122" HorizontalAlignment="Center"/>
+                <Label Content="Chiều dài cọc m)" Height="25" Margin="20,10,30,0" Width="122" HorizontalAlignment="Center"/>
                 <ComboBox  Height="25" Margin="0,10,0,0" Width="122" HorizontalAlignment="Center" ItemsSource="{Binding DanhSachChieuDai}" SelectedItem="{Binding ChieuDai , Mode=TwoWay}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="41">
-                <Label Content="Đường kính cốt thép" Height="25" Margin="20,10,30,0" Width="122" HorizontalAlignment="Center"/>
-                <ComboBox  Height="25" Margin="0,10,0,0" Width="122" HorizontalAlignment="Center" ItemsSource="{Binding DanhSachDuongkinhcotthep}" SelectedItem="{Binding Duongkinhcotthep , Mode=TwoWay}" />
+                <Label Content="Đường kính cốt thép(m)" Height="25" Margin="20,10,30,0" Width="140"/>
+                <ComboBox  Height="25" Margin="-15,10,0,0" Width="122" HorizontalAlignment="Center" ItemsSource="{Binding DanhSachDuongkinhcotthep}" SelectedItem="{Binding Duongkinhcotthep , Mode=TwoWay}" />
             </StackPanel>
         </StackPanel>
         <Button Content="OK" Foreground="White" Height="30" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Width="70" Command="{Binding LuuCommand}">

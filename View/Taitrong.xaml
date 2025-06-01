@@ -11,23 +11,23 @@
             <GroupBox Header="Tải trọng" FontSize="15" FontWeight="Bold" FontFamily="arialblack" Margin="0 70 0 0" Width="184" Height="158" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" >
             <StackPanel Background="White" Orientation="Vertical">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Label Content="Lực dọc N   =" FontSize="12" FontWeight="Medium" />
+                    <Label Content="Lực dọc N (kN)  =" FontSize="12" FontWeight="Medium" />
                     <TextBox Width="40" Height="22" FontWeight="Medium" />
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Label Content="Lực cắt Qx  =" FontSize="12" FontWeight="Medium"/>
+                    <Label Content="Lực cắt Qx (kN) =" FontSize="12" FontWeight="Medium"/>
                     <TextBox Width="40" Height="22" FontWeight="Medium"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Label Content="Lực cắt Qy  =" FontSize="12" FontWeight="Medium"/>
+                    <Label Content="Lực cắt Qy (kN) =" FontSize="12" FontWeight="Medium"/>
                     <TextBox Width="40" Height="22" FontWeight="Medium"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Label Content="Momen Mx =" FontSize="12" FontWeight="Medium"/>
+                    <Label Content="Momen Mx(kNm) =" FontSize="12" FontWeight="Medium"/>
                     <TextBox Width="40" Height="22" FontWeight="Medium"/>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Label Content="Momen My =" FontSize="12" FontWeight="Medium"/>
+                    <Label Content="Momen My(kNm) =" FontSize="12" FontWeight="Medium"/>
                     <TextBox Width="40" Height="22" FontWeight="Medium"/>
                 </StackPanel>
             </StackPanel>

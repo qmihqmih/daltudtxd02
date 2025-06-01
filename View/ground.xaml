@@ -43,10 +43,10 @@
             <Label Grid.Row="0" Grid.Column="0" Content="φ :" VerticalAlignment="Center"/>
             <TextBox Grid.Row="0" Grid.Column="1" Name="txtPhi" Width="100" Text="{Binding SelectedGround.Phi, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Row="1" Grid.Column="0" Content="Chiều dày :" VerticalAlignment="Center"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Chiều dày(m) :" VerticalAlignment="Center"/>
             <TextBox Grid.Row="1" Grid.Column="1" Name="txtH" Width="100" Text="{Binding SelectedGround.H, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Label Grid.Row="2" Grid.Column="0" Content="Gamma γ :" VerticalAlignment="Center"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Gamma γ(kN/m3) :" VerticalAlignment="Center"/>
             <TextBox Grid.Row="2" Grid.Column="1" Name="txtGamma" Width="100" Text="{Binding SelectedGround.Gamma, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Grid.Row="3" Grid.Column="0" Content="Độ kết dính C :" VerticalAlignment="Center"/>
