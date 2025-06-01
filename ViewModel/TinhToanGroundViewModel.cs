@@ -23,12 +23,16 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
         }
 
         public ICommand TinhToanCommand { get; }
+        public ICommand LuuCommand { get; }
 
         public TinhToanGroundViewModel()
         {
             GroundList = new ObservableCollection<Ground>();
             TinhToanCommand = new RelayCommand(TinhToan);
+            LuuCommand = new RelayCommand(LuuDuLieu);
         }
+
+        
 
         private void TinhToan()
         {
@@ -55,23 +59,32 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 
         private double? TinhE(Ground g)
         {
-            if (g.Gamma != null && g.H != null)
-                return g.Gamma * g.H * 10; // ví dụ đơn giản
+            if (g.Gamma != null && g.H != null && g.W != null && g.Delta != null)
+                return (g.Delta * g.GammaNuoc * (1 + g.W)) / g.Gamma ; 
             return null;
         }
 
         private double? TinhDoset(Ground g)
         {
-            if (g.C != null && g.Modun != null && g.Modun != 0) 
-                return g.C / g.Modun; // ví dụ đơn giản
+            if (g.Wch != null && g.Wd != null && g.W != null) 
+                return (g.W - g.Wd) / (g.Wch - g.Wd); 
             return null;
         }
 
         private double? TinhChiSoDeo(Ground g)
         {
-            if (g.C != null && g.Modun != null && g.Modun != 0)
-                return g.C / g.Modun; // ví dụ đơn giản
+            if (g.Wch != null && g.Wd != null )
+                return g.Wch - g.Wd; 
             return null;
+        }
+
+
+        private void LuuDuLieu()
+        {
+            // Gán lại GroundList đã cập nhật vào DataService
+            DataService.Instance.InputData.GroundList = GroundList.ToList();
+
+            MessageBox.Show(" Dữ liệu nền đất đã được lưu!");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -83,24 +96,27 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 
     public class RelayCommand : ICommand
     {
-        private readonly Action _execute;
-        private readonly Func<bool> _canExecute;
-        private Action<object> confirmPhuongAn;
+        private readonly Action<object> _execute;
+        private readonly Func<object, bool> _canExecute;
 
-        public RelayCommand(Action execute, Func<bool> canExecute = null)
+        // Dùng cho Action<object>
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
         {
-            _execute = execute;
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
             _canExecute = canExecute;
         }
 
-        public RelayCommand(Action<object> confirmPhuongAn)
+        // Dùng cho Action không có tham số
+        public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
-            this.confirmPhuongAn = confirmPhuongAn;
+            if (execute == null) throw new ArgumentNullException(nameof(execute));
+            _execute = o => execute(); // gói lại thành Action<object>
+            if (canExecute != null)
+                _canExecute = o => canExecute();
         }
 
-        public bool CanExecute(object parameter) => _canExecute == null || _canExecute();
-
-        public void Execute(object parameter) => _execute();
+        public bool CanExecute(object parameter) => _canExecute == null || _canExecute(parameter);
+        public void Execute(object parameter) => _execute(parameter);
 
         public event EventHandler CanExecuteChanged
         {
@@ -108,4 +124,6 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
             remove => CommandManager.RequerySuggested -= value;
         }
     }
+
+
 }
