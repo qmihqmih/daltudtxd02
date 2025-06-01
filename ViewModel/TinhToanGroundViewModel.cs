@@ -7,7 +7,8 @@ using System.Windows.Input;
 using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model;
 using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Service;
 using Microsoft.Win32;
-using ClosedXML.Excel;  
+using ClosedXML.Excel;
+
 
 namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 {
@@ -23,10 +24,31 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
                 OnPropertyChanged(nameof(GroundList));
             }
         }
+        private string _xacDinhLopDat;
+        public string XacDinhLopDat
+        {
+            get => _xacDinhLopDat;
+            set
+            {
+                _xacDinhLopDat = value;
+                OnPropertyChanged(nameof(XacDinhLopDat));
+            }
+        }
+        private string _XacDinhTrangThai;
+        public string XacDinhTrangThai
+        {
+            get => _XacDinhTrangThai;
+            set
+            {
+                _XacDinhTrangThai = value;
+                OnPropertyChanged(nameof(XacDinhTrangThai));
+            }
+        }
 
         public ICommand TinhToanCommand { get; }
         public ICommand LuuCommand { get; }
         public ICommand ExportToExcelCommand { get; }
+       
 
         public TinhToanGroundViewModel()
         {
@@ -55,7 +77,8 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
                 g.E = (int?)TinhE(g);
                 g.Doset = (int?)TinhDoset(g);
                 g.ChiSoDeo = (int?)TinhChiSoDeo(g);
-
+                g.GroundType = XacDinhLopDatTheoA(g.ChiSoDeo);
+                g.GroundState = GetTrangThaiDat(g.GroundType, g.Doset ?? 0);
                 GroundList.Add(g);
             }
         }
@@ -80,6 +103,48 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
                 return g.Wch - g.Wd; 
             return null;
         }
+        public string XacDinhLopDatTheoA(double? A)
+        {
+            if (A == null)
+                return "";
+
+            if (A < 7)
+                return "Đất á cát (Cát pha)";
+            else if (A >= 7 && A < 17)
+                return "Đất á sét (Sét pha)";
+            else
+                return "Đất sét";
+        }
+        public string GetTrangThaiDat(string tenDat, double doSetB)
+        {
+            if (tenDat.ToLower().Contains("cát pha"))
+            {
+                if (doSetB < 0)
+                    return "Cứng";
+                else if (doSetB <= 1)
+                    return "Dẻo";
+                else 
+                    return "Chảy (nhão)";
+            }
+            else if (tenDat.ToLower().Contains("sét") || tenDat.ToLower().Contains("sét pha"))
+            {
+                if (doSetB < 0)
+                    return "Cứng (rắn)";
+                else if (doSetB <= 0.25)
+                    return "Nửa cứng";
+                else if (doSetB <= 0.50)
+                    return "Dẻo cứng";
+                else if (doSetB <= 0.75)
+                    return "Dẻo mềm";
+                else if (doSetB <= 1.00)
+                    return "Dẻo chảy";
+                else 
+                    return "Chảy (nhão)";
+            }
+
+            return "";
+        }
+
 
 
         private void LuuDuLieu()
@@ -106,7 +171,7 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
                 {
                     var worksheet = workbook.Worksheets.Add("Báo Cáo Tính Toán");
                     worksheet.Cell(1, 1).Value = "Lớp Đất";
-                    worksheet.Cell(1, 2).Value = "e(Hệ Số Rỗng";
+                    worksheet.Cell(1, 2).Value = "e(Hệ Số Rỗng)";
                     worksheet.Cell(1, 3).Value = "A (Chỉ số dẻo)";
                     worksheet.Cell(1, 4).Value = "B (Độ sệt)";
 
