@@ -20,7 +20,7 @@
                 </StackPanel>
             </Grid>
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="150" Width="300" Orientation="Vertical">
-                <Button Content="Tính toán" Foreground="White" Grid.Row="1" Height="30" HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Center" Width="70" Command="{Binding TinhToanCommand}">
+                <Button Content="Tính toán" Foreground="White" Grid.Row="1" Height="30" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Center" Width="70" Command="{Binding TinhToanCommand}">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
@@ -30,31 +30,17 @@
                     </Button.Template>
                 </Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0">
-                <ListView Name="GroundGrid" ItemsSource="{Binding GroundList}" Height="110" Width="500">
-                    <ListView.View>
-                        <GridView x:Name="grdTest">
-                            <GridViewColumn Header="Lớp đất" DisplayMemberBinding="{Binding Lopdat}" Width="50"/>
-                            <GridViewColumn Header="Hệ số rỗng e" DisplayMemberBinding="{Binding E}" Width="75"/>
-                            <GridViewColumn Header="Chỉ số dẻo A" DisplayMemberBinding="{Binding ChiSoDeo}" Width="80"/>
-                            <GridViewColumn Header="Độ sệt B" DisplayMemberBinding="{Binding Doset}" Width="60"/>
-                            <GridViewColumn Header="Loại đất" DisplayMemberBinding="{Binding GroundType}" Width="115"/>
-                            <GridViewColumn Header="Trạng thái đất" DisplayMemberBinding="{Binding GroundState}" Width="115"/>
-
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <Button Content="Lưu dữ liệu" Foreground="White" Width="93" Height="30" Margin="0,10,0,0" Command="{Binding LuuCommand}">
-                    <Button.Template>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
-
+            <ListView Name="GroundGrid" Grid.Row="1" Margin="0,192,0,0" ItemsSource="{Binding GroundList}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="110" Width="383" >
+                <ListView.View>
+                    <GridView x:Name="grdTest">
+                        <GridViewColumn Header="Lớp đất" DisplayMemberBinding="{Binding Lopdat}" Width="50"/>
+                        <GridViewColumn Header="Hệ số rỗng e" DisplayMemberBinding="{Binding E}" Width="75"/>
+                        <GridViewColumn Header="Chỉ số dẻo A" DisplayMemberBinding="{Binding ChiSoDeo}" Width="80"/>
+                        <GridViewColumn Header="Độ sệt B" DisplayMemberBinding="{Binding Doset}" Width="60"/>
+                        <GridViewColumn Header="Loại đất" DisplayMemberBinding="{Binding GroundType}" Width="115"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Width="100" Grid.Row="1" Margin=" 0 0 0 50">
                 <Button Content="Chọn phương án" Foreground="White" Height="30" Width="100" x:Name="btnchonphuongancoc" Click="btnchonphuongancoc_Click" >
                     <Button.Template>

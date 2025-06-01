@@ -1,0 +1,79 @@
+﻿<Window x:Class="LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View.Botricoc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View"
+        mc:Ignorable="d"
+        Title="Botricoc" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#021526">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Button HorizontalAlignment="Right" VerticalAlignment="Top" Height="22" Width="30" x:Name="btnClose" Click="btnClose_Click" >
+                    <Image Stretch="Uniform" Source="/Resources/icons/Close.png"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <TabControl Grid.Row="1" Background="LightBlue">
+            <TabItem Header="n = 1">
+                <Button Height="180" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/1-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 2">
+                <Button Height="100" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/2-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 3">
+                <Button Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/3-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 4">
+                <Button Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/4-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 5">
+                <Button Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/5-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 6">
+                <Button Height="150" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/6-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 7">
+                <Button Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/7-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 8">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                    <Button Height="190" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="70">
+                        <Image Source="/Resources/images/8-1.png" Height="200" Width="200"/>
+                    </Button>
+                    <Button Height="120" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="70">
+                        <Image Source="/Resources/images/8-2.png" Height="200" Width="200"/>
+                    </Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="n = 9">
+                <Button Height="200" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/9-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+            <TabItem Header="n = 10">
+                <Button Height="140" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="/Resources/images/10-1.png" Height="200" Width="200"/>
+                </Button>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
