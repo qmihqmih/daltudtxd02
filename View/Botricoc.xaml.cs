@@ -65,24 +65,30 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View
                     break;
 
                 case 5:
-                    // 4 cọc 2 bên, 1 cọc trung tâm đài
-                    L = minEdgeToCenter * 2 + 3 * minCenterToCenter + rectWidth;
-                    B = minEdgeToCenter * 2 + minCenterToCenter + rectHeight;
+                    // Bố trí: 3 hàng, hàng 1 và 3 có 2 cọc, hàng 2 có 1 cọc trung tâm
+                    L = minEdgeToCenter * 2 + minCenterToCenter + rectWidth;
+                    B = minEdgeToCenter * 2 + 2 * minCenterToCenter + rectHeight;
+
+                    // Y toạ độ cho 3 hàng
                     double topY5 = minEdgeToCenter + rectHeight / 2;
-                    double bottomY5 = topY5 + minCenterToCenter;
+                    double centerY5 = topY5 + minCenterToCenter;
+                    double bottomY5 = centerY5 + minCenterToCenter;
 
+                    // X toạ độ cho 2 cọc trái và phải
                     double leftX5 = minEdgeToCenter + rectWidth / 2;
-                    double rightX5 = leftX5 + 3 * minCenterToCenter;
+                    double rightX5 = leftX5 + minCenterToCenter;
 
-                    // 4 cọc 2 bên hàng trên và dưới
+                    // Hàng 1: 2 cọc
                     pileCenters.Add((leftX5, topY5));
                     pileCenters.Add((rightX5, topY5));
+
+                    // Hàng 2: 1 cọc ở giữa
+                    double centerX5 = (leftX5 + rightX5) / 2;
+                    pileCenters.Add((centerX5, centerY5));
+
+                    // Hàng 3: 2 cọc
                     pileCenters.Add((leftX5, bottomY5));
                     pileCenters.Add((rightX5, bottomY5));
-
-                    // 1 cọc ở giữa (hàng dưới, chính giữa)
-                    double centerX5 = (leftX5 + rightX5) / 2;
-                    pileCenters.Add((centerX5, bottomY5));
                     break;
 
                 case 7:
@@ -115,26 +121,38 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View
                     break;
 
                 case 8:
-                    // Tất cả ở mép đài, giả sử 4 cọc trên dưới, 2 bên (đối xứng)
-                    L = minEdgeToCenter * 2 + 3 * minCenterToCenter + rectWidth;
+                    // Tổng chiều dài và rộng vẫn như cũ (nếu cần bạn có thể điều chỉnh sau)
+                    L = minEdgeToCenter * 2 + 4 * minCenterToCenter + rectWidth;
                     B = minEdgeToCenter * 2 + 2 * minCenterToCenter + rectHeight;
 
+                    // Toạ độ theo chiều dọc (3 hàng)
                     double topY8 = minEdgeToCenter + rectHeight / 2;
-                    double bottomY8 = topY8 + 2 * minCenterToCenter;
-                    double leftX8 = minEdgeToCenter + rectWidth / 2;
-                    double rightX8 = leftX8 + 3 * minCenterToCenter;
+                    double middleY8 = topY8 + minCenterToCenter;
+                    double bottomY8 = middleY8 + minCenterToCenter;
 
-                    // 4 cọc hàng trên
-                    pileCenters.Add((leftX8, topY8));
-                    pileCenters.Add((leftX8 + minCenterToCenter, topY8));
-                    pileCenters.Add((leftX8 + 2 * minCenterToCenter, topY8));
-                    pileCenters.Add((rightX8, topY8));
+                    // Toạ độ X bắt đầu từ trái sang, có 5 vị trí
+                    double baseX8 = minEdgeToCenter + rectWidth / 2;
 
-                    // 4 cọc hàng dưới (đối xứng)
-                    pileCenters.Add((leftX8, bottomY8));
-                    pileCenters.Add((leftX8 + minCenterToCenter, bottomY8));
-                    pileCenters.Add((leftX8 + 2 * minCenterToCenter, bottomY8));
-                    pileCenters.Add((rightX8, bottomY8));
+                    // 5 vị trí X
+                    double x0 = baseX8;
+                    double x1 = baseX8 + minCenterToCenter;
+                    double x2 = baseX8 + 2 * minCenterToCenter;
+                    double x3 = baseX8 + 3 * minCenterToCenter;
+                    double x4 = baseX8 + 4 * minCenterToCenter;
+
+                    // Hàng 1 (trên): 3 cọc ở vị trí 1, 2, 3
+                    pileCenters.Add((x1, topY8));
+                    pileCenters.Add((x2, topY8));
+                    pileCenters.Add((x3, topY8));
+
+                    // Hàng 2 (giữa): 2 cọc ở vị trí 1 và 3 (bỏ vị trí giữa - x2)
+                    pileCenters.Add((x1, middleY8));
+                    pileCenters.Add((x3, middleY8));
+
+                    // Hàng 3 (dưới): giống hàng 1
+                    pileCenters.Add((x1, bottomY8));
+                    pileCenters.Add((x2, bottomY8));
+                    pileCenters.Add((x3, bottomY8));
                     break;
 
                 case 10:

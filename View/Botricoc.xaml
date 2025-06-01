@@ -21,7 +21,9 @@
                 <TextBlock Text="Kích thước cọc (mm):" FontWeight="Bold" HorizontalAlignment="Center"/>
                 <ComboBox Name="cmbPileSize" Width="120" Height="25" Margin="0,5,0,0" HorizontalAlignment="Center">
                     <ComboBoxItem Content="200x200" IsSelected="True"/>
+                    <ComboBoxItem Content="250x250"/>
                     <ComboBoxItem Content="300x300"/>
+                    <ComboBoxItem Content="350x350"/>
                     <ComboBoxItem Content="400x400"/>
                 </ComboBox>
             </StackPanel>
