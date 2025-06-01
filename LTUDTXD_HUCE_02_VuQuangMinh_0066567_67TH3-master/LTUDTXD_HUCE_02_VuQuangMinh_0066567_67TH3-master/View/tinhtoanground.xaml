@@ -1,0 +1,57 @@
+﻿<Window x:Class="LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View.tinhtoanground"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View"
+        mc:Ignorable="d"
+        Title="tinhtoanground" Height="450" Width="800">
+    <Grid>
+        <Grid Background="White" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#021526">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Top" Height="22" Width="30" x:Name="btnClose" Click="btnClose_Click" >
+                        <Image Stretch="Uniform" Source="/Resources/icons/Close.png"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Height="150" Width="300" Orientation="Vertical">
+                <Button Content="Tính toán" Foreground="White" Grid.Row="1" Height="30" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Center" Width="70" Command="{Binding TinhToanCommand}">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <ListView Name="GroundGrid" Grid.Row="1" Margin="0,192,0,0" ItemsSource="{Binding GroundList}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="110" Width="383" >
+                <ListView.View>
+                    <GridView x:Name="grdTest">
+                        <GridViewColumn Header="Lớp đất" DisplayMemberBinding="{Binding Lopdat}" Width="50"/>
+                        <GridViewColumn Header="Hệ số rỗng e" DisplayMemberBinding="{Binding E}" Width="75"/>
+                        <GridViewColumn Header="Chỉ số dẻo A" DisplayMemberBinding="{Binding ChiSoDeo}" Width="80"/>
+                        <GridViewColumn Header="Độ sệt B" DisplayMemberBinding="{Binding Doset}" Width="60"/>
+                        <GridViewColumn Header="Loại đất" DisplayMemberBinding="{Binding GroundType}" Width="115"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Width="100" Grid.Row="1" Margin=" 0 0 0 50">
+                <Button Content="Chọn phương án" Foreground="White" Height="30" Width="100" x:Name="btnchonphuongancoc" Click="btnchonphuongancoc_Click" >
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
