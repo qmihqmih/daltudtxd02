@@ -78,15 +78,11 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Resources.usercontrols1
 
         }
 
-        private void xuatbaocao_Click(object sender, RoutedEventArgs e)
-        {
-            xuatbaocao xuatbaocao = new xuatbaocao();
-            xuatbaocao.ShowDialog();
-        }
 
         private void nendat_Click(object sender, RoutedEventArgs e)
         {
-
+            xuatnendat xuatnendat = new xuatnendat();
+            xuatnendat.ShowDialog();
         }
     }
 }

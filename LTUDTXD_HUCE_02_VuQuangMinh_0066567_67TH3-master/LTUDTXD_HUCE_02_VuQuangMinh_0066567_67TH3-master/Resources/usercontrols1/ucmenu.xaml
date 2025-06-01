@@ -45,7 +45,10 @@
                     <RibbonButton Label="Nền Đất"  x:Name="nendat" Click="nendat_Click"/>
                 </RibbonGroup>
                 <RibbonGroup Header=" ">
-                    <RibbonButton Label="Sức Chịu Tải" x:Name="succhiutai" Click="succhiutai_Click"/>
+                    <RibbonButton Label="Sức Chịu Tải" />
+                </RibbonGroup>
+                <RibbonGroup Header=" ">
+                    <RibbonButton Label="Đài Cọc" />
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>

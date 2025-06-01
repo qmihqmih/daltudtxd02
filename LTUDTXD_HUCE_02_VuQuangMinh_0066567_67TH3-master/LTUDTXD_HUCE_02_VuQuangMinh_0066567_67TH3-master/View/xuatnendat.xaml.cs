@@ -1,5 +1,4 @@
-﻿using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,14 +15,13 @@ using System.Windows.Shapes;
 namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View
 {
     /// <summary>
-    /// Interaction logic for xuatbaocao.xaml
+    /// Interaction logic for xuatnendat.xaml
     /// </summary>
-    public partial class xuatbaocao : Window
+    public partial class xuatnendat : Window
     {
-        public xuatbaocao()
+        public xuatnendat()
         {
-            InitializeComponent();
-            this.DataContext = new MainViewModel();
+            this.DataContext = new tinhtoanground();                 
         }
     }
 }

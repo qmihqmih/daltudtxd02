@@ -151,8 +151,8 @@
     <Compile Include="View\tinhtoanground.xaml.cs">
       <DependentUpon>tinhtoanground.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\xuatbaocao.xaml.cs">
-      <DependentUpon>xuatbaocao.xaml</DependentUpon>
+    <Compile Include="View\xuatnendat.xaml.cs">
+      <DependentUpon>xuatnendat.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -218,7 +218,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\xuatbaocao.xaml">
+    <Page Include="View\xuatnendat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
