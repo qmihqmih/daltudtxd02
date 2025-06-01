@@ -18,9 +18,9 @@
         <GroupBox Header="Đài móng" FontWeight="Black" FontSize="20" Margin="0,10,10,52" HorizontalAlignment="Right" Width="172">
             <StackPanel Orientation="Vertical">
                 <Label Content="Chiều dài đài cọc (m)" FontWeight="Medium" FontSize="15" Margin="0 0 0 0"/>
-                <TextBox IsReadOnly="True"></TextBox>
+                <TextBox ></TextBox>
                 <Label Content="Chiều rộng đài cọc (m)" FontWeight="Medium" FontSize="15" Margin="0 5 0 0"/>
-                <TextBox IsReadOnly="True"></TextBox>
+                <TextBox ></TextBox>
                 <Label Content="Chiều cao đài cọc (m)" FontWeight="Medium" FontSize="15" Margin="0 5 0 0"/>
                 <TextBox></TextBox>
                 <Label Content="C1 (m)" FontWeight="Medium" FontSize="15" Margin="0 5 0 0"/>
@@ -30,7 +30,7 @@
             </StackPanel>
         </GroupBox>
 
-        <Button Content="Lưu dữ liệu" Foreground="White" Width="93" Height="30" Margin="0,0,0,250"  Command="{Binding LuuCommand}"  >
+        <Button Content="Lưu dữ liệu" Foreground="White" Width="93" Height="30" Margin="0,0,0,300"  Command="{Binding LuuCommand}"  >
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
@@ -40,8 +40,11 @@
             </Button.Template>
         </Button>
 
-        <GroupBox Header="" FontWeight="Medium" FontSize="20" Margin="0,243,0,10" HorizontalAlignment="Center" Width="378">
-            <StackPanel Orientation="Vertical" Height="222">
+        <Image Source="/Resources/images/Screenshot 2025-06-02 023626.png" 
+               HorizontalAlignment="Left" Height="140" Margin="300,120,0,0" VerticalAlignment="Top" Width="200"/>
+
+        <GroupBox Header="" FontWeight="Medium" FontSize="20" Margin="0,249,0,0" HorizontalAlignment="Center" Width="378">
+            <StackPanel Orientation="Vertical" Height="148">
                 <Button Content="Kiểm tra chiều cao đài" Foreground="White" Width="292" Height="30" Margin="15,10,0,0" Command="{Binding KiemTraChieuCaoDaiCocCommand}">
                     <Button.Template>
                         <ControlTemplate TargetType="{x:Type Button}">
