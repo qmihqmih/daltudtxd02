@@ -174,6 +174,8 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
                     worksheet.Cell(1, 2).Value = "e(Hệ Số Rỗng)";
                     worksheet.Cell(1, 3).Value = "A (Chỉ số dẻo)";
                     worksheet.Cell(1, 4).Value = "B (Độ sệt)";
+                    worksheet.Cell(1, 5).Value = "Loại Đất";
+                    worksheet.Cell(1, 6).Value = "Trạng Thái";
 
                     int row = 2;
                     foreach (var dat in GroundList)
@@ -182,6 +184,9 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
                         worksheet.Cell(row, 2).Value = dat.E;
                         worksheet.Cell(row, 3).Value = dat.ChiSoDeo;
                         worksheet.Cell(row, 4).Value = dat.Doset;
+                        worksheet.Cell(row, 5).Value = dat.GroundType;
+                        worksheet.Cell(row, 6).Value = dat.GroundState;
+
                         row++;
                     }
 
