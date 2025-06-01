@@ -31,7 +31,7 @@
                 </Button>
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,130,0,0">
-                <ListView Name="GroundGrid" ItemsSource="{Binding GroundList}" Height="110" Width="383">
+                <ListView Name="GroundGrid" ItemsSource="{Binding GroundList}" Height="110" Width="500">
                     <ListView.View>
                         <GridView x:Name="grdTest">
                             <GridViewColumn Header="Lớp đất" DisplayMemberBinding="{Binding Lopdat}" Width="50"/>
@@ -39,6 +39,8 @@
                             <GridViewColumn Header="Chỉ số dẻo A" DisplayMemberBinding="{Binding ChiSoDeo}" Width="80"/>
                             <GridViewColumn Header="Độ sệt B" DisplayMemberBinding="{Binding Doset}" Width="60"/>
                             <GridViewColumn Header="Loại đất" DisplayMemberBinding="{Binding GroundType}" Width="115"/>
+                            <GridViewColumn Header="Trạng thái đất" DisplayMemberBinding="{Binding GroundState}" Width="115"/>
+
                         </GridView>
                     </ListView.View>
                 </ListView>
