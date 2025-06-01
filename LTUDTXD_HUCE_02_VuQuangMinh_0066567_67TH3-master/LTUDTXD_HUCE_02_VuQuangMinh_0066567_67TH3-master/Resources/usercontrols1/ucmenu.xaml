@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Resources.usercontrols1.ucmenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Resources.usercontrols1"
+             mc:Ignorable="d" 
+             d:DesignHeight="140" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+        </Grid.RowDefinitions>
+        <Ribbon Background="#021526" SelectedIndex="0" Foreground="White" Grid.RowSpan="2" SelectionChanged="Ribbon_SelectionChanged">
+            <RibbonTab Header="Khai báo">
+                <RibbonGroup Width="70" >
+                    <RibbonButton Label="Vật liệu" LargeImageSource="/Resources/icons/vatlieu.png" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btnvatlieu" Click="btnvatlieu_Click"  />
+                </RibbonGroup>
+                <RibbonGroup Width="70" Header="Tải trọng">
+                    <RibbonButton Label="Tải trọng" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" x:Name="btntaitrong" Click="btntaitrong_Click" />
+                </RibbonGroup>
+                <RibbonGroup Width="70">
+                    <RibbonButton Label="Đất nền" LargeImageSource="/Resources/icons/soil_50px.png" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btnground" Click="btnground_Click" />
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Tính toán">
+                <RibbonGroup Width="70" >
+                    <RibbonButton Label="Đất nền" LargeImageSource="/Resources/icons/soil_50px.png" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btntinhtoanground" Click="btntinhtoanground_Click" />
+                </RibbonGroup>
+                <RibbonGroup Width="110" Header="Sức chịu tải cọc">
+                    <RibbonButton Label="Sức chịu tải cọc" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btnsucchiutaicoc" Click="btnsucchiutaicoc_Click" Height="70"/>
+                </RibbonGroup>
+                <RibbonGroup Width="70">
+                    <RibbonButton Label="Cọc" LargeImageSource="/Resources/images/cọc.png" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btncoc" Click="btncoc_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Width="70">
+                    <RibbonButton Label="Đài cọc" LargeImageSource="/Resources/images/đài cọc.png" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btndaicoc" Click="btndaicoc_Click" />
+                </RibbonGroup>
+                <RibbonGroup Width="70">
+                    <RibbonButton Label="Cốt thép" LargeImageSource="/Resources/images/cốt thép.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </RibbonGroup>
+            </RibbonTab>
+            <RibbonTab Header="Xuất báo cáo">
+                <RibbonGroup Header="">
+                    <RibbonButton Label="Nền Đất"  x:Name="nendat" Click="nendat_Click"/>
+                </RibbonGroup>
+                <RibbonGroup Header=" ">
+                    <RibbonButton Label="Sức Chịu Tải" x:Name="succhiutai" Click="succhiutai_Click"/>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Height="22" Width="30" x:Name="btnClose" Click="btnClose_Click" >
+                <Image Stretch="Uniform" Source="/Resources/icons/Close.png"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
