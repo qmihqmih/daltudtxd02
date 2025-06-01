@@ -5,11 +5,13 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model
 {
     public class daicocmodel : INotifyPropertyChanged
     {
-        private double _hc;     // Chiều cao cột (m)
+        private double _hc;     // Chiều dài cột (m)
         private double _bc;     // Chiều rộng cột (m)
         private double _daidc;  // Chiều dài đài cọc (m)
         private double _rongdc; // Chiều rộng đài cọc (m)
         private double _caodc;  // Chiều cao đài cọc (m)
+        private double _c1;
+        private double _c2;
 
         public double Hc
         {
@@ -41,6 +43,17 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model
             set { _caodc = value; OnPropertyChanged(nameof(Caodc)); }
         }
 
+        public double C1
+        {
+            get => _c1;
+            set { _c1 = value; OnPropertyChanged(nameof(C1)); }
+        }
+
+        public double C2
+        {
+            get => _c2;
+            set { _c2 = value; OnPropertyChanged(nameof(C2)); }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

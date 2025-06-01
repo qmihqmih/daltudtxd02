@@ -53,6 +53,7 @@ public class SucChiuTaiCocViewModel : INotifyPropertyChanged
         TinhToanSPTCommand = new RelayCommand(_ => SPT = TinhSPT());
         TinhToanThongKeCommand = new RelayCommand(_ => ThongKe = TinhThongKe());
         TinhToanVatLieuCommand = new RelayCommand(_ => VatLieu = TinhVatLieu());
+        SoLuongCocCommand = new RelayCommand(SoLuongCoc);
 
         LuuCommand = new RelayCommand(_ => LuuDuLieu());
     }
@@ -115,6 +116,43 @@ public class SucChiuTaiCocViewModel : INotifyPropertyChanged
 
         MessageBox.Show("Kết quả đã được lưu!");
     }
+
+
+    private double? soLuongCocSobo;
+    public double? SoLuongCocSobo
+    {
+        get => soLuongCocSobo;
+        set
+        {
+            soLuongCocSobo = value;
+            OnPropertyChanged(nameof(SoLuongCocSobo));
+        }
+    }
+
+    public ICommand SoLuongCocCommand { get; }
+
+    public void SoLuongCoc(object obj)
+    {
+        var taitrong = DataService.Instance.InputData.Taitrong;
+        double beta = 1.5;
+        double? rcocmin = DataService.Instance.InputData.Rcocmin;
+
+        if (taitrong != null && rcocmin.HasValue && rcocmin.Value != 0)
+        {
+            double N = taitrong.N;
+            SoLuongCocSobo = Math.Round(N * beta / rcocmin.Value, 2);
+
+            // Lưu vào InputData 
+            DataService.Instance.InputData.SoLuongCocSobo = SoLuongCocSobo.Value;
+        }
+        else
+        {
+            SoLuongCocSobo = 0;
+        }
+    }
+
+
+
 
 }
 

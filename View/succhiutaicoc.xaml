@@ -12,7 +12,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="1">
-            <GroupBox Header="Tính toán sức chịu tải của cọc " Foreground="Black" FontSize="15" FontWeight="Bold" FontFamily="arialblack" Margin="0,0,0,20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="267" Height="320">
+            <GroupBox Header="Tính toán sức chịu tải của cọc " Foreground="Black" FontSize="15" FontWeight="Bold" FontFamily="arialblack" Margin="0,0,0,70" HorizontalAlignment="Center" VerticalAlignment="Center" Width="267" Height="320">
                 <StackPanel Background="White" Orientation="Vertical" Height="291">
                     <StackPanel HorizontalAlignment="Center" >
                         <Label Content="1. Sức chịu tải của cọc thí nghiệm CPT : " FontSize="12" FontWeight="Medium" />
@@ -95,10 +95,19 @@
                     </StackPanel>
                 </StackPanel>
             </GroupBox>
-            <StackPanel Orientation="Vertical"  Margin="0 0 0 5" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Vertical"  Margin="0 0 0 15" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 15">
+                    <Button Content="Tính" FontSize="12" FontWeight="Medium" Width="60" Margin="10 1 30 1" Foreground="White" Command="{Binding SoLuongCocCommand}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="#03346E" BorderBrush="Black" BorderThickness="1" CornerRadius="10">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                     <Label Content="Số lượng cọc sơ bộ n = "/>
-                    <TextBox IsReadOnly="True" Width="49" Height="22" FontWeight="Medium"/>
+                    <TextBox IsReadOnly="True" Width="49" Height="22" FontWeight="Medium" Text="{Binding SoLuongCocSobo}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Button Content="Bố trí cọc" FontSize="12" FontWeight="Medium" Width="65" Margin="10 0 30 5" Foreground="White" Height="23" x:Name="btnBotricoc" Click="btnBotricoc_Click">

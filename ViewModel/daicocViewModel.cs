@@ -14,7 +14,7 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 
     public class daicocViewModel : INotifyPropertyChanged //OnPropertyChanged(...): giúp View tự động cập nhật nếu giá trị thay đổi
     {
-        private double _hc, _bc, _daidc, _rongdc, _caodc, _rb;
+        private double _hc, _bc, _daidc, _rongdc, _caodc, _rb, _c1, _c2;
         public double Hc
         {
             get => _hc;
@@ -50,6 +50,18 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
             set { _rb = value; OnPropertyChanged(nameof(Rb)); }
         }
 
+        public double C1
+        {
+            get => _c1;
+            set { _c1 = value; OnPropertyChanged(nameof(C1)); }
+        }
+
+        public double C2
+        {
+            get => _c2;
+            set { _c2 = value; OnPropertyChanged(nameof(C2)); }
+        }
+
         private string _ketQuaKiemTra1;
         public string KetQuaKiemTra1
         {
@@ -64,25 +76,20 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
             set { _ketQuaKiemTra2 = value; OnPropertyChanged(); }
         }
 
-        private string _ketQuaKiemTra3;
-        public string KetQuaKiemTra3
-        {
-            get => _ketQuaKiemTra3;
-            set { _ketQuaKiemTra3 = value; OnPropertyChanged(); }
-        }
 
         public ICommand LuuCommand { get; }
         public ICommand KiemTraChieuCaoDaiCocCommand { get; }
+        public ICommand KiemTraDamThungCommand { get; }
 
         public daicocViewModel()
         {
             LuuCommand = new RelayCommand(LuuDuLieu);
             KiemTraChieuCaoDaiCocCommand = new RelayCommand(_ => KiemTraChieuCaoDaiCoc());
+            KiemTraDamThungCommand = new RelayCommand(_ => KiemTraDamThung());
 
             // Gán giá trị sẵn có từ DataService
             Rb = DataService.Instance.InputData.Vatlieu.Rb;
             
-
         }
 
         private void LuuDuLieu(object obj)
@@ -93,26 +100,26 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
             DataService.Instance.InputData.Daicoc.Daidc = this.Daidc;
             DataService.Instance.InputData.Daicoc.Rongdc = this.Rongdc;
             DataService.Instance.InputData.Daicoc.Caodc = this.Caodc;
+            DataService.Instance.InputData.Daicoc.C1 = this.C1;
+            DataService.Instance.InputData.Daicoc.C2 = this.C2;
 
-            MessageBox.Show("Dữ liệu đã được lưu!");
-           
+            MessageBox.Show("Dữ liệu nhập được lưu!");          
         }
 
         public void KiemTraChieuCaoDaiCoc()
         {
-            double? caodc = DataService.Instance.InputData.Daicoc.Caodc;
-            double? bc = this.Bc;
-            double? hc = this.Hc;
+            double? caodc = DataService.Instance.InputData.Daicoc.Caodc; //m
+            double? bc = this.Bc; //m
+            double? hc = this.Hc; //m
             double? n = DataService.Instance.InputData.Taitrong?.N;
-            double? rb = this.Rb;
+            double? rb = this.Rb; //MPa            
 
-
-            if (caodc.HasValue && n.HasValue && bc.HasValue && hc.HasValue)
+            if (caodc.HasValue && n.HasValue && bc.HasValue && hc.HasValue && this.Hc > 0 && this.Bc > 0 && this.Caodc > 0)
             {
-                bool ketqua = n.Value / 2 * (bc.Value + hc.Value) * (caodc.Value - 0.03)  <= rb.Value ;
+                bool ketqua = n.Value / 2 * (bc.Value + hc.Value) * (caodc.Value - 0.03)  <= rb.Value * 1000;
                 KetQuaKiemTra1 = ketqua
-                    ? $"✅ Đạt: N/2 × (bc + hc) × (h - 0.03) = {n.Value / 2 * (bc.Value + hc.Value) * (caodc.Value - 0.03):F2} ≤ Rb = {rb:F2}"
-                    : $"❌ Không đạt: N/2 × (bc + hc) × (h - 0.03) = {n.Value / 2 * (bc.Value + hc.Value) * (caodc.Value - 0.03):F2} > Rb = {rb:F2}";
+                    ? $"✅ Đạt: N/2 × (bc + hc) × (h - 0.03) = {n.Value / 2 * (bc.Value + hc.Value) * (caodc.Value - 0.03):F2} ≤ Rb = {rb*1000:F2}"
+                    : $"❌ Không đạt: N/2 × (bc + hc) × (h - 0.03) = {n.Value / 2 * (bc.Value + hc.Value) * (caodc.Value - 0.03):F2} > Rb = {rb*1000:F2}";
 
             }
             else
@@ -120,6 +127,50 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
                 KetQuaKiemTra1 = "⚠️ Thiếu dữ liệu để kiểm tra sức chịu tải.";
             }
         }
+
+        public void KiemTraDamThung()
+        {
+            double? caodc = DataService.Instance.InputData.Daicoc.Caodc; // m
+            double? bc = this.Bc; // m
+            double? hc = this.Hc; // m
+            double? c1 = this.C1; // m
+            double? c2 = this.C2; // m
+            double? rbt = DataService.Instance.InputData.Vatlieu.Rbt; // MPa
+            double? b = this.Rongdc; // m
+
+            if (caodc.HasValue && bc.HasValue && hc.HasValue && c1.HasValue && c2.HasValue && rbt.HasValue
+                && bc > 0 && hc > 0 && caodc > 0 && c1 > 0 && c2 > 0)
+            {
+                double h = caodc.Value;
+                double alpha1 = 1.5 * Math.Sqrt(1 + Math.Pow(h / c1.Value, 2));
+                double alpha2 = 1.5 * Math.Sqrt(1 + Math.Pow(h / c2.Value, 2));
+
+                double tongPhanLuc = (alpha1 * (bc.Value + c1.Value) + alpha2 * (hc.Value + c2.Value)) * (h - 0.03) * rbt.Value * 1000; 
+                double sucChiuTaiTH1 = rbt.Value * (bc.Value + h - 0.03) * (h - 0.03) * 1000;
+                double sucChiuTaiTH2 = rbt.Value * (bc.Value + b.Value) * (h - 0.03) * 1000;
+
+                if (b > bc + 2 * h)
+                {
+                    bool ketqua = tongPhanLuc <= sucChiuTaiTH1;
+
+                    KetQuaKiemTra2 = ketqua
+                        ? $"✅ Đạt: Phản lực tổng ({tongPhanLuc:F2} ) ≤ Sức chịu tải ({sucChiuTaiTH1:F2} )"
+                        : $"❌ Không đạt: Phản lực tổng ({tongPhanLuc:F2} ) > Sức chịu tải ({sucChiuTaiTH1:F2} )";
+                }
+                else
+                {
+                    bool ketqua = tongPhanLuc <= sucChiuTaiTH2;
+                    KetQuaKiemTra2 = ketqua
+                        ? $"✅ Đạt: Phản lực tổng ({tongPhanLuc:F2} ) ≤ Sức chịu tải ({sucChiuTaiTH2:F2} )"
+                        : $"❌ Không đạt: Phản lực tổng ({tongPhanLuc:F2} ) > Sức chịu tải ({sucChiuTaiTH2:F2} )";
+                }
+            }
+            else
+            {
+                KetQuaKiemTra2 = "⚠️ Thiếu dữ liệu để kiểm tra đâm thủng.";
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
