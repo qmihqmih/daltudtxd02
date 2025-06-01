@@ -9,6 +9,6 @@
       Title="HomePage">
 
     <Grid>
-        <Image Source="/Resources/images/city.jpg" Stretch="Fill"/>
+        <Image Source="/Resources/images/anhnen.jpg" Stretch="Fill"/>
     </Grid>
 </Page>
