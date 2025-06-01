@@ -6,6 +6,8 @@ using System.Windows;
 using System.Windows.Input;
 using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model;
 using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Service;
+using Microsoft.Win32;
+using ClosedXML.Excel;  
 
 namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 {
@@ -24,16 +26,17 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 
         public ICommand TinhToanCommand { get; }
         public ICommand LuuCommand { get; }
+        public ICommand ExportToExcelCommand { get; }
 
         public TinhToanGroundViewModel()
         {
             GroundList = new ObservableCollection<Ground>();
             TinhToanCommand = new RelayCommand(TinhToan);
             LuuCommand = new RelayCommand(LuuDuLieu);
+            ExportToExcelCommand = new RelayCommand(ExportToExcel);
         }
 
         
-
         private void TinhToan()
         {
             var data = DataService.Instance.InputData.GroundList;
@@ -85,6 +88,44 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
             DataService.Instance.InputData.GroundList = GroundList.ToList();
 
             MessageBox.Show(" Dữ liệu nền đất đã được lưu!");
+        }
+
+
+        private void ExportToExcel()
+        {
+            TinhToan();
+            var dialog = new SaveFileDialog
+            {
+                Filter = "Excel File|*.xlsx",
+                FileName = "TinhToan.xlsx"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add("Báo Cáo Tính Toán");
+                    worksheet.Cell(1, 1).Value = "Lớp Đất";
+                    worksheet.Cell(1, 2).Value = "e(Hệ Số Rỗng";
+                    worksheet.Cell(1, 3).Value = "A (Chỉ số dẻo)";
+                    worksheet.Cell(1, 4).Value = "B (Độ sệt)";
+
+                    int row = 2;
+                    foreach (var dat in GroundList)
+                    {
+                        worksheet.Cell(row, 1).Value = dat.Lopdat;
+                        worksheet.Cell(row, 2).Value = dat.E;
+                        worksheet.Cell(row, 3).Value = dat.ChiSoDeo;
+                        worksheet.Cell(row, 4).Value = dat.Doset;
+                        row++;
+                    }
+
+                    worksheet.Columns().AdjustToContents();
+
+                    workbook.SaveAs(dialog.FileName);
+                    MessageBox.Show("Xuất file Excel thành công!", "Thông báo");
+                }
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

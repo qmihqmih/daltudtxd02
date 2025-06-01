@@ -60,7 +60,7 @@
                 </Grid>
             </TabItem>
             
-            <TabItem Header="Cốt thép">
+            <!--<TabItem Header="Cốt thép">
                 <TabItem.DataContext>
                     <local:Vatlieu2ViewModel />
                 </TabItem.DataContext>
@@ -101,7 +101,7 @@
                         <DataGrid ItemsSource="{Binding Vatlieu2}" AutoGenerateColumns="True" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Grid>
                 </Grid>
-            </TabItem>
+            </TabItem>-->
         </TabControl>
     </Grid>
 </Window>

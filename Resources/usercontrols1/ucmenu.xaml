@@ -36,20 +36,21 @@
                 <RibbonGroup Width="70">
                     <RibbonButton Label="Đài cọc" LargeImageSource="/Resources/images/đài cọc.png" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="btndaicoc" Click="btndaicoc_Click" />
                 </RibbonGroup>
-                <RibbonGroup Width="70">
+                <!--<RibbonGroup Width="70">
                     <RibbonButton Label="Cốt thép" LargeImageSource="/Resources/images/cốt thép.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                </RibbonGroup>
+                </RibbonGroup>-->
             </RibbonTab>
             <RibbonTab Header="Xuất báo cáo">
                 <RibbonGroup Header="">
-                    <RibbonButton Label="Excel" LargeImageSource="/Resources/icons/Microsoft Excel.png"/>
+                    <RibbonButton Label="Excel" LargeImageSource="/Resources/icons/Microsoft Excel.png" x:Name="xuatbaocao" Click="xuatbaocao_Click"/>
+
                 </RibbonGroup>
-                <RibbonGroup Header="">
+                <!--<RibbonGroup Header="">
                     <RibbonButton Label="PDF" LargeImageSource="/Resources/icons/PDF.png"/>
                 </RibbonGroup>
                 <RibbonGroup Header="">
                     <RibbonButton Label="Khác" LargeImageSource="/Resources/icons/Plus.png"/>
-                </RibbonGroup>
+                </RibbonGroup>-->
             </RibbonTab>
         </Ribbon>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">

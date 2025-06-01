@@ -1,6 +1,8 @@
-﻿using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model;
+﻿using ClosedXML.Excel;
+using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Model;
 using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Service;
 using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.View;
+using Microsoft.Win32;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -46,6 +48,7 @@ public class SucChiuTaiCocViewModel : INotifyPropertyChanged
     public ICommand TinhToanSPTCommand { get; }
     public ICommand TinhToanThongKeCommand { get; }
     public ICommand TinhToanVatLieuCommand { get; }
+    public ICommand ExportsucchiutaiCommand { get; }
 
     public SucChiuTaiCocViewModel()
     {
@@ -54,6 +57,7 @@ public class SucChiuTaiCocViewModel : INotifyPropertyChanged
         TinhToanThongKeCommand = new RelayCommand(_ => ThongKe = TinhThongKe());
         TinhToanVatLieuCommand = new RelayCommand(_ => VatLieu = TinhVatLieu());
         SoLuongCocCommand = new RelayCommand(SoLuongCoc);
+        ExportsucchiutaiCommand = new RelayCommand(_ => Exportsucchiutai());
 
         LuuCommand = new RelayCommand(_ => LuuDuLieu());
     }
@@ -148,6 +152,45 @@ public class SucChiuTaiCocViewModel : INotifyPropertyChanged
         else
         {
             SoLuongCocSobo = 0;
+        }
+    }
+
+    private void Exportsucchiutai()
+    { // Tính toán lại trước khi xuất
+        CPT = TinhCPT();
+        SPT = TinhSPT();
+        ThongKe = TinhThongKe();
+        VatLieu = TinhVatLieu();
+        UpdateMin(); // Cập nhật lại Min
+        var dialog = new SaveFileDialog
+        {
+            Filter = "Excel File|*.xlsx",
+            FileName = "Suc chiu tai.xlsx"
+        };
+        if (dialog.ShowDialog() == true)
+        {
+            using (var workbook = new XLWorkbook())
+            {
+                var worksheet = workbook.Worksheets.Add("Báo Cáo suc chiu tai");
+
+                // Ghi tiêu đề cột
+                worksheet.Cell(1, 1).Value = "CPT";
+                worksheet.Cell(1, 2).Value = "SPT";
+                worksheet.Cell(1, 3).Value = "Thống Kê";
+                worksheet.Cell(1, 4).Value = "Vật Liệu";
+                worksheet.Cell(1, 5).Value = "Sức Chịu Tải Min";
+
+                // Ghi dữ liệu
+                worksheet.Cell(2, 1).Value = CPT ?? 0;
+                worksheet.Cell(2, 2).Value = SPT ?? 0;
+                worksheet.Cell(2, 3).Value = ThongKe ?? 0;
+                worksheet.Cell(2, 4).Value = VatLieu ?? 0;
+                worksheet.Cell(2, 5).Value = Min ?? 0;
+
+                // Lưu file
+                workbook.SaveAs(dialog.FileName);
+                MessageBox.Show("Đã xuất file Excel thành công!");
+            }
         }
     }
 

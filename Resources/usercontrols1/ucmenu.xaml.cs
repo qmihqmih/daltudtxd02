@@ -72,5 +72,11 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Resources.usercontrols1
             Taitrong taitrong = new Taitrong();
             taitrong.ShowDialog();
         }
+
+        private void xuatbaocao_Click(object sender, RoutedEventArgs e)
+        {
+            xuatbaocao xuatbaocao = new xuatbaocao();
+            xuatbaocao.ShowDialog();
+        }
     }
 }

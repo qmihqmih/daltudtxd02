@@ -8,6 +8,8 @@ using static LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel.GroundViewModel;
 using System.Windows.Input;
 using LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.Service;
 using System.Windows;
+using ClosedXML.Excel;
+using Microsoft.Win32;
 
 namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
 {
@@ -80,13 +82,14 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
         public ICommand LuuCommand { get; }
         public ICommand KiemTraChieuCaoDaiCocCommand { get; }
         public ICommand KiemTraDamThungCommand { get; }
+        public ICommand ExportdaicocCommand { get; }
 
         public daicocViewModel()
         {
             LuuCommand = new RelayCommand(LuuDuLieu);
             KiemTraChieuCaoDaiCocCommand = new RelayCommand(_ => KiemTraChieuCaoDaiCoc());
             KiemTraDamThungCommand = new RelayCommand(_ => KiemTraDamThung());
-
+            ExportdaicocCommand = new RelayCommand(_ => Exportdaicoc());
             // Gán giá trị sẵn có từ DataService
             Rb = DataService.Instance.InputData.Vatlieu.Rb;
             
@@ -168,6 +171,42 @@ namespace LTUDTXD_HUCE_2_VuQuangMinh_0066567_67TH3.ViewModel
             else
             {
                 KetQuaKiemTra2 = "⚠️ Thiếu dữ liệu để kiểm tra đâm thủng.";
+            }
+        }
+
+        private void Exportdaicoc()
+        {
+            KiemTraChieuCaoDaiCoc();
+            KiemTraDamThung();
+            var dialog = new SaveFileDialog
+            {
+                Filter = "Excel File|*.xlsx",
+                FileName = "Suc chiu tai.xlsx"
+            };
+            if (dialog.ShowDialog() == true)
+            {
+                using (var workbook = new XLWorkbook())
+                {
+                    var worksheet = workbook.Worksheets.Add("Báo Cáo suc chiu tai");
+
+                    // Ghi tiêu đề cột
+                    worksheet.Cell(1, 1).Value = "Chiều Dài";
+                    worksheet.Cell(1, 2).Value = "Chiều Rộng";
+                    worksheet.Cell(1, 3).Value = "Chiều cao";
+                    worksheet.Cell(1, 4).Value = "C1";
+                    worksheet.Cell(1, 5).Value = "C2";
+
+                    // Ghi dữ liệu
+                    worksheet.Cell(2, 1).Value = Daidc;
+                    worksheet.Cell(2, 2).Value = Rongdc;
+                    worksheet.Cell(2, 3).Value = Caodc;
+                    worksheet.Cell(2, 4).Value = C1;
+                    worksheet.Cell(2, 5).Value = C2;
+
+                    // Lưu file
+                    workbook.SaveAs(dialog.FileName);
+                    MessageBox.Show("Đã xuất file Excel thành công!");
+                }
             }
         }
 
